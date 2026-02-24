@@ -58,9 +58,18 @@ const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <Button className="hidden md:inline-flex rounded-full px-6 font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all">
-            Nous contacter
-          </Button>
+          <div className="hidden md:inline-flex items-center gap-2">
+            <Button asChild className="rounded-full px-5 font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all gap-2">
+              <a href="https://wa.link/madr38" target="_blank" rel="noopener noreferrer">
+                💬 Message
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="rounded-full px-5 font-semibold gap-2">
+              <a href="tel:+33768036995">
+                📞 Appeler
+              </a>
+            </Button>
+          </div>
         </motion.div>
 
         <button className="md:hidden relative z-50" onClick={() => setOpen(!open)}>
@@ -101,7 +110,12 @@ const Navbar = () => {
                   {l}
                 </motion.a>
               ))}
-              <Button className="rounded-full w-full font-semibold mt-2">Nous contacter</Button>
+              <Button asChild className="rounded-full w-full font-semibold mt-2 gap-2">
+                <a href="https://wa.link/madr38" target="_blank" rel="noopener noreferrer">💬 Nous écrire</a>
+              </Button>
+              <Button asChild variant="outline" className="rounded-full w-full font-semibold gap-2">
+                <a href="tel:+33768036995">📞 Nous appeler</a>
+              </Button>
             </div>
           </motion.div>
         )}

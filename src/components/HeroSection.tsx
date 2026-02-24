@@ -99,11 +99,15 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center gap-4 mb-10"
         >
-          <Button size="lg" className="rounded-full px-10 py-6 font-bold text-base gap-2 shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300">
-            Commencer mon audit gratuit <ArrowRight size={18} />
+          <Button asChild size="lg" className="rounded-full px-10 py-6 font-bold text-base gap-2 shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300">
+            <a href="https://wa.link/madr38" target="_blank" rel="noopener noreferrer">
+              💬 Nous écrire sur WhatsApp <ArrowRight size={18} />
+            </a>
           </Button>
-          <Button size="lg" variant="ghost" className="rounded-full px-8 py-6 font-semibold text-base text-muted-foreground hover:text-foreground">
-            Découvrir nos services →
+          <Button asChild size="lg" variant="ghost" className="rounded-full px-8 py-6 font-semibold text-base text-muted-foreground hover:text-foreground gap-2">
+            <a href="tel:+33768036995">
+              📞 Nous appeler
+            </a>
           </Button>
         </motion.div>
 
