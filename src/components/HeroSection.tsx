@@ -91,7 +91,7 @@ const HeroSection = () => {
               variants={letterVariants}
               className="inline-block"
             >
-              &
+              pour
             </motion.span>
           </span>
           <br className="hidden md:block" />
