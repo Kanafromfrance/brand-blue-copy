@@ -40,11 +40,13 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-5xl md:text-6xl lg:text-8xl font-bold leading-[1.05] mb-6 tracking-tight"
         >
-          Vos locations gagnent 30% de CA,{" "}
+          On gère vos <span className="text-primary italic font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>locations</span> &{" "}
+          <br className="hidden md:block" />
+          l'<span className="text-primary italic font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>augmentation de votre CA</span>{" "}
           <br className="hidden md:block" />
           pendant que vous êtes{" "}
           <span className="relative inline-block">
-            <span className="text-primary italic">à la plage.</span>
+            à la plage.
             <motion.span
               className="absolute -bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"
               initial={{ scaleX: 0 }}
