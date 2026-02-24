@@ -40,19 +40,19 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-5xl md:text-6xl lg:text-8xl font-bold leading-[1.05] mb-6 tracking-tight"
         >
-          Vos locations gagnent{" "}
+          Vos locations gagnent 30% de CA,{" "}
+          <br className="hidden md:block" />
+          pendant que vous êtes{" "}
           <span className="relative inline-block">
-            <span className="text-primary italic">30% de CA</span>
+            <span className="text-primary italic">à la plage.</span>
             <motion.span
-              className="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded-full"
+              className="absolute -bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
               style={{ transformOrigin: "left" }}
             />
           </span>
-          <br className="hidden md:block" />
-          pendant que vous êtes à la plage.
         </motion.h1>
 
         {/* Sub headline */}
