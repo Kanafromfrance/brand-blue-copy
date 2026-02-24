@@ -13,9 +13,10 @@ const FAQSection = () => (
   <section id="faq" className="py-24">
     <div className="max-w-3xl mx-auto px-6">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
         className="text-center mb-12"
       >
         <h2 className="text-4xl lg:text-5xl font-bold mb-4">FAQ</h2>
@@ -23,10 +24,18 @@ const FAQSection = () => (
       </motion.div>
       <Accordion type="single" collapsible className="space-y-3">
         {faqs.map((f, i) => (
-          <AccordionItem key={i} value={`item-${i}`} className="bg-card border border-border rounded-xl px-6">
-            <AccordionTrigger className="text-left font-semibold font-sans hover:no-underline">{f.q}</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
-          </AccordionItem>
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ delay: i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <AccordionItem value={`item-${i}`} className="bg-card border border-border rounded-xl px-6 hover:border-primary/30 transition-colors">
+              <AccordionTrigger className="text-left font-semibold font-sans hover:no-underline">{f.q}</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
+            </AccordionItem>
+          </motion.div>
         ))}
       </Accordion>
     </div>

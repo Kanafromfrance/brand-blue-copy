@@ -8,12 +8,13 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => (
-  <section className="py-24 bg-primary/5">
+  <section className="py-24 bg-primary/5 overflow-hidden">
     <div className="max-w-7xl mx-auto px-6">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
         className="text-center mb-12"
       >
         <h2 className="text-4xl lg:text-5xl font-bold mb-4">
@@ -24,15 +25,24 @@ const TestimonialsSection = () => (
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="bg-card rounded-2xl p-6 border border-border"
+            initial={{ opacity: 0, y: 50, rotateY: -10 }}
+            whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
+            className="bg-card rounded-2xl p-6 border border-border hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all cursor-pointer"
           >
             <div className="flex gap-0.5 mb-4">
               {[...Array(t.rating)].map((_, j) => (
-                <Star key={j} size={16} className="fill-primary text-primary" />
+                <motion.div
+                  key={j}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 + 0.3 + j * 0.05 }}
+                >
+                  <Star size={16} className="fill-primary text-primary" />
+                </motion.div>
               ))}
             </div>
             <p className="text-foreground mb-4">"{t.text}"</p>
