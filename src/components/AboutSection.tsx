@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import teamPhoto from "@/assets/team.jpg";
 
 const stats = [
   { value: "🎯", label: "Expert de Cannes" },
@@ -16,13 +17,11 @@ const AboutSection = () => (
           viewport={{ once: true }}
         >
           <div className="relative">
-            <div className="w-full aspect-[4/3] rounded-3xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/10 flex items-center justify-center">
-              <div className="text-center p-8">
-                <span className="text-6xl mb-4 block">🌊</span>
-                <p className="text-xl font-bold">L'équipe AzulBay</p>
-                <p className="text-muted-foreground">Passionnés d'hospitalité</p>
-              </div>
-            </div>
+            <img
+              src={teamPhoto}
+              alt="L'équipe AzulBay"
+              className="w-full aspect-[4/3] rounded-3xl object-cover border border-border/50"
+            />
             <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground rounded-2xl p-6 shadow-xl">
               <p className="text-3xl font-bold">5 ans</p>
               <p className="text-sm opacity-90">d'expérience</p>

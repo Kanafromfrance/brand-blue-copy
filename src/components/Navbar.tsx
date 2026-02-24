@@ -1,8 +1,8 @@
 import logo from "@/assets/logo.png";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ContactPopover from "@/components/ContactPopover";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -57,19 +57,9 @@ const Navbar = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 }}
+          className="hidden md:block"
         >
-          <div className="hidden md:inline-flex items-center gap-2">
-            <Button asChild className="rounded-full px-5 font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all gap-2">
-              <a href="https://wa.link/madr38" target="_blank" rel="noopener noreferrer">
-                💬 Message
-              </a>
-            </Button>
-            <Button asChild variant="outline" className="rounded-full px-5 font-semibold gap-2">
-              <a href="tel:+33768036995">
-                📞 Appeler
-              </a>
-            </Button>
-          </div>
+          <ContactPopover variant="nav" />
         </motion.div>
 
         <button className="md:hidden relative z-50" onClick={() => setOpen(!open)}>
@@ -110,12 +100,9 @@ const Navbar = () => {
                   {l}
                 </motion.a>
               ))}
-              <Button asChild className="rounded-full w-full font-semibold mt-2 gap-2">
-                <a href="https://wa.link/madr38" target="_blank" rel="noopener noreferrer">💬 Nous écrire</a>
-              </Button>
-              <Button asChild variant="outline" className="rounded-full w-full font-semibold gap-2">
-                <a href="tel:+33768036995">📞 Nous appeler</a>
-              </Button>
+              <div className="mt-2">
+                <ContactPopover />
+              </div>
             </div>
           </motion.div>
         )}
