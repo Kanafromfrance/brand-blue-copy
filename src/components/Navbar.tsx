@@ -1,45 +1,112 @@
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const links = ["Services", "Comment ça marche", "Secteurs", "À propos", "FAQ"];
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-      <div className="max-w-7xl mx-auto flex flex-col items-center px-6 py-4 gap-3">
-        <div className="flex items-center justify-between w-full md:justify-center">
-          <a href="#" className="flex items-center gap-2">
-            <img src={logo} alt="AzulBay" className="h-16 w-auto" />
-          </a>
-          <button className="md:hidden" onClick={() => setOpen(!open)}>
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-background/90 backdrop-blur-xl shadow-lg border-b border-border/50"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+        <a href="#" className="flex items-center gap-2">
+          <motion.img
+            src={logo}
+            alt="AzulBay"
+            className="h-12 w-auto"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+        </a>
+
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a key={l} href={`#${l.toLowerCase().replace(/\s/g, "-")}`} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          {links.map((l, i) => (
+            <motion.a
+              key={l}
+              href={`#${l.toLowerCase().replace(/\s/g, "-")}`}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + i * 0.08 }}
+            >
               {l}
-            </a>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full" />
+            </motion.a>
           ))}
-          <Button className="rounded-full px-6 font-semibold">
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <Button className="hidden md:inline-flex rounded-full px-6 font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all">
             Nous contacter
           </Button>
-        </div>
+        </motion.div>
+
+        <button className="md:hidden relative z-50" onClick={() => setOpen(!open)}>
+          <AnimatePresence mode="wait">
+            {open ? (
+              <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                <X size={24} />
+              </motion.div>
+            ) : (
+              <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                <Menu size={24} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </button>
       </div>
-      {open && (
-        <div className="md:hidden border-t border-border bg-background px-6 py-4 flex flex-col gap-4">
-          {links.map((l) => (
-            <a key={l} href={`#${l.toLowerCase().replace(/\s/g, "-")}`} className="text-sm font-medium text-muted-foreground" onClick={() => setOpen(false)}>
-              {l}
-            </a>
-          ))}
-          <Button className="rounded-full w-full font-semibold">Nous contacter</Button>
-        </div>
-      )}
-    </nav>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-xl border-t border-border/50"
+          >
+            <div className="px-6 py-6 flex flex-col gap-4">
+              {links.map((l, i) => (
+                <motion.a
+                  key={l}
+                  href={`#${l.toLowerCase().replace(/\s/g, "-")}`}
+                  className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setOpen(false)}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: i * 0.06 }}
+                >
+                  {l}
+                </motion.a>
+              ))}
+              <Button className="rounded-full w-full font-semibold mt-2">Nous contacter</Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
