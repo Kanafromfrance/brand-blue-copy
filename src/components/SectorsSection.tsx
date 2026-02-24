@@ -19,7 +19,7 @@ const SectorsSection = () => (
       >
         <h2 className="text-4xl lg:text-5xl font-bold mb-4">Nos <span className="italic text-primary">secteurs</span></h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Quel que soit votre type de bien, nous avons l'expertise pour le gérer.
+          Experts de Cannes et ses environs — quel que soit votre type de bien, nous avons l'expertise pour le gérer.
         </p>
       </motion.div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

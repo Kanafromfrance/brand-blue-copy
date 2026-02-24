@@ -3,9 +3,10 @@ import { motion } from "framer-motion";
 import { ArrowRight, Star, TrendingUp, Shield, Headphones } from "lucide-react";
 
 const stats = [
-  { icon: TrendingUp, value: "40+", label: "logements en gestion sur Cannes" },
+  { icon: TrendingUp, value: "40+", label: "logements en gestion" },
   { icon: Shield, value: "+33%", label: "de revenus en moyenne" },
   { icon: Headphones, value: "7j/7", label: "support disponible" },
+  { icon: Star, value: "4.8/5", label: "note globale" },
 ];
 
 const HeroSection = () => {
@@ -42,11 +43,11 @@ const HeroSection = () => {
         >
           On gère vos <span className="text-primary italic font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>locations</span> &{" "}
           <br className="hidden md:block" />
-          l'<span className="text-primary italic font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>augmentation de votre CA</span>{" "}
+          vous fait <span className="text-primary italic font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>gagner plus</span>,{" "}
           <br className="hidden md:block" />
-          pendant que vous êtes{" "}
+          les pieds dans{" "}
           <span className="relative inline-block">
-            à la plage.
+            l'eau.
             <motion.span
               className="absolute -bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"
               initial={{ scaleX: 0 }}
@@ -72,7 +73,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="grid grid-cols-3 gap-3 md:gap-4 w-full max-w-3xl mb-10"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full max-w-4xl mb-10"
         >
           {stats.map((s, i) => (
             <motion.div

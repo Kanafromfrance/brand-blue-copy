@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "15+", label: "Villes couvertes" },
-  { value: "200+", label: "Propriétaires" },
-  { value: "4.9/5", label: "Note moyenne" },
+  { value: "🎯", label: "Expert de Cannes" },
+  { value: "40+", label: "Propriétaires satisfaits" },
+  { value: "4.8/5", label: "Note moyenne" },
 ];
 
 const AboutSection = () => (
