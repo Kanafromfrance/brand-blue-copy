@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Star, TrendingUp, Shield, Clock, Zap } from "lucide-react";
+import { ArrowRight, Star, TrendingUp, Shield, Headphones } from "lucide-react";
 
 const stats = [
-  { icon: TrendingUp, value: "+30%", label: "de revenus en moyenne" },
-  { icon: Shield, value: "0", label: "stress, on gère tout" },
-  { icon: Clock, value: "24/7", label: "disponibilité totale" },
-  { icon: Zap, value: "48h", label: "pour être opérationnel" },
+  { icon: TrendingUp, value: "40+", label: "logements en gestion sur Cannes" },
+  { icon: Shield, value: "+33%", label: "de revenus en moyenne" },
+  { icon: Headphones, value: "7j/7", label: "support disponible" },
 ];
 
 const HeroSection = () => {
@@ -41,11 +40,9 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-5xl md:text-6xl lg:text-8xl font-bold leading-[1.05] mb-6 tracking-tight"
         >
-          On gère vos locations,{" "}
-          <br className="hidden md:block" />
-          vous profitez de{" "}
+          Vos locations gagnent{" "}
           <span className="relative inline-block">
-            <span className="text-primary italic">Cannes</span>
+            <span className="text-primary italic">30% de CA</span>
             <motion.span
               className="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded-full"
               initial={{ scaleX: 0 }}
@@ -54,6 +51,8 @@ const HeroSection = () => {
               style={{ transformOrigin: "left" }}
             />
           </span>
+          <br className="hidden md:block" />
+          pendant que vous êtes à la plage.
         </motion.h1>
 
         {/* Sub headline */}
@@ -71,7 +70,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full max-w-3xl mb-10"
+          className="grid grid-cols-3 gap-3 md:gap-4 w-full max-w-3xl mb-10"
         >
           {stats.map((s, i) => (
             <motion.div
