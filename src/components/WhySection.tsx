@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Clock, TrendingUp, Shield, Headphones } from "lucide-react";
 
 const reasons = [
-  { icon: Clock, title: "Gagnez du temps", desc: "On s'occupe de tout : annonces, communication, check-in/out, ménage et maintenance." },
-  { icon: TrendingUp, title: "Revenus optimisés", desc: "Tarification dynamique et stratégie de visibilité pour maximiser votre taux d'occupation." },
+  { icon: Clock, title: "+30 logements en gestion", desc: "Plus de 30 biens gérés sur Cannes et ses environs." },
+  { icon: TrendingUp, title: "+30% de CA", desc: "Un chiffre d'affaires boosté grâce à notre stratégie de tarification et de visibilité." },
   { icon: Shield, title: "Sérénité totale", desc: "Assurance, vérification des voyageurs et suivi en temps réel de votre bien." },
-  { icon: Headphones, title: "Support 7j/7", desc: "Une équipe réactive disponible pour vous et vos voyageurs à tout moment." },
+  { icon: Headphones, title: "Communication 7j/7", desc: "Une équipe réactive disponible pour vous et vos voyageurs à tout moment." },
 ];
 
 const WhySection = () => (
