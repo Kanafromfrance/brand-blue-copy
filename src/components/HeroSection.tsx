@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Star, TrendingUp, Shield, Headphones } from "lucide-react";
+import { Star, TrendingUp, Shield, Headphones } from "lucide-react";
+import ContactPopover from "@/components/ContactPopover";
 
 const stats = [
-  { icon: TrendingUp, value: "40+", label: "logements en gestion" },
+  { icon: TrendingUp, value: "40+", label: "logements gérés" },
   { icon: Shield, value: "+33%", label: "de revenus en moyenne" },
   { icon: Headphones, value: "7j/7", label: "support disponible" },
   { icon: Star, value: "4.8/5", label: "note globale" },
@@ -58,57 +58,53 @@ const HeroSection = () => {
           </span>
         </motion.h1>
 
-        {/* Sub headline */}
+        {/* Sub headline — shorter */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed"
+          className="text-lg md:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed"
         >
-          Conciergerie haut de gamme pour propriétaires exigeants. Accueil voyageurs, ménage, linge, optimisation tarifaire — on s'occupe de tout, vous récoltez les résultats.
+          Conciergerie haut de gamme pour propriétaires exigeants à Cannes. On s'occupe de tout, vous récoltez les résultats.
         </motion.p>
 
-        {/* Stats grid */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full max-w-4xl mb-10"
+          transition={{ duration: 0.5, delay: 0.45 }}
+          className="mb-12"
+        >
+          <ContactPopover />
+        </motion.div>
+
+        {/* Stats — clean horizontal bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 bg-card/80 backdrop-blur-sm rounded-2xl px-8 py-5 border border-border/50"
         >
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + i * 0.1 }}
-              className="relative group bg-card/80 backdrop-blur-sm rounded-2xl p-4 border border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+              transition={{ delay: 0.6 + i * 0.1 }}
+              className="flex items-center gap-3"
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
-                <s.icon className="text-primary" size={20} />
+              <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+                <s.icon className="text-primary" size={18} />
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-foreground">{s.value}</p>
-              <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
+              <div className="text-left">
+                <p className="text-lg font-bold text-foreground leading-tight">{s.value}</p>
+                <p className="text-xs text-muted-foreground">{s.label}</p>
+              </div>
+              {i < stats.length - 1 && (
+                <div className="hidden sm:block h-8 w-px bg-border ml-5" />
+              )}
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center gap-4 mb-10"
-        >
-          <Button asChild size="lg" className="rounded-full px-10 py-6 font-bold text-base gap-2 shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300">
-            <a href="https://wa.link/madr38" target="_blank" rel="noopener noreferrer">
-              💬 Nous écrire sur WhatsApp <ArrowRight size={18} />
-            </a>
-          </Button>
-          <Button asChild size="lg" variant="ghost" className="rounded-full px-8 py-6 font-semibold text-base text-muted-foreground hover:text-foreground gap-2">
-            <a href="tel:+33768036995">
-              📞 Nous appeler
-            </a>
-          </Button>
         </motion.div>
 
         {/* Social proof */}
@@ -116,7 +112,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex items-center gap-4 bg-muted/50 rounded-full px-6 py-3 border border-border/50"
+          className="flex items-center gap-4 mt-8"
         >
           <div className="flex -space-x-2">
             {[1, 2, 3, 4, 5].map((i) => (
@@ -125,7 +121,6 @@ const HeroSection = () => {
               </div>
             ))}
           </div>
-          <div className="h-6 w-px bg-border" />
           <div className="flex gap-0.5">
             {[...Array(5)].map((_, i) => (
               <Star key={i} size={12} className="fill-primary text-primary" />
