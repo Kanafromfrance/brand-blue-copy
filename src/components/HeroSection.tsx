@@ -43,7 +43,7 @@ const HeroSection = () => {
         >
           On gère vos <span className="text-primary italic font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>locations</span> &{" "}
           <br className="hidden md:block" />
-          vous fait <span className="text-primary italic font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>gagner plus</span>,{" "}
+          <span className="text-primary italic font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>gagner plus</span>,{" "}
           <br className="hidden md:block" />
           les pieds dans{" "}
           <span className="relative inline-block">
