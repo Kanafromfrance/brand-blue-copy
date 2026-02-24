@@ -41,9 +41,11 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-5xl md:text-6xl lg:text-8xl font-bold leading-[1.05] mb-6 tracking-tight"
         >
-          Votre bien génère{" "}
+          On gère vos locations,{" "}
+          <br className="hidden md:block" />
+          vous profitez de{" "}
           <span className="relative inline-block">
-            <span className="text-primary italic">+30% de revenus</span>
+            <span className="text-primary italic">Cannes</span>
             <motion.span
               className="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded-full"
               initial={{ scaleX: 0 }}
@@ -52,8 +54,6 @@ const HeroSection = () => {
               style={{ transformOrigin: "left" }}
             />
           </span>
-          <br className="hidden md:block" />
-          pendant que vous vivez.
         </motion.h1>
 
         {/* Sub headline */}
@@ -63,7 +63,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed"
         >
-          On prend les clés, vous prenez les bénéfices. AzulBay transforme votre location saisonnière en machine à revenus — sans que vous leviez le petit doigt.
+          Conciergerie haut de gamme pour propriétaires exigeants. Accueil voyageurs, ménage, linge, optimisation tarifaire — on s'occupe de tout, vous récoltez les résultats.
         </motion.p>
 
         {/* Stats grid */}
