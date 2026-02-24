@@ -49,7 +49,7 @@ const HeroSection = () => {
           <span className="relative inline-block">
             l'eau.
             <motion.span
-              className="absolute -bottom-1 left-0 w-full h-1 bg-primary/30 rounded-full"
+              className="absolute -bottom-2 left-0 w-full h-[6px] bg-primary rounded-full"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
