@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Clock, TrendingUp, Shield, Headphones } from "lucide-react";
 
 const reasons = [
-  { icon: Clock, title: "+30 logements en gestion", desc: "Plus de 30 biens gérés sur Cannes et ses environs." },
-  { icon: TrendingUp, title: "+30% de CA", desc: "Un chiffre d'affaires boosté grâce à notre stratégie de tarification et de visibilité." },
-  { icon: Shield, title: "Sérénité totale", desc: "Assurance, vérification des voyageurs et suivi en temps réel de votre bien." },
-  { icon: Headphones, title: "Communication 7j/7", desc: "Une équipe réactive disponible pour vous et vos voyageurs à tout moment." },
+  { icon: Clock, title: "Gestion clé en main", desc: "Déjà sur Airbnb ou envie de vous lancer ? On s'occupe de tout, de A à Z." },
+  { icon: TrendingUp, title: "+30% de CA en moyenne", desc: "Stratégie tarifaire, visibilité optimisée et annonces professionnelles pour maximiser vos revenus." },
+  { icon: Shield, title: "Sérénité totale", desc: "Assurance, vérification des voyageurs et suivi en temps réel — que vous soyez débutant ou expérimenté." },
+  { icon: Headphones, title: "Communication 7j/7", desc: "Une équipe réactive pour vous accompagner et gérer vos voyageurs à tout moment." },
 ];
 
 const WhySection = () => (
@@ -21,7 +21,7 @@ const WhySection = () => (
           Pourquoi faire appel à <span className="text-primary">AzulBay</span> ?
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Nous prenons en charge la gestion complète de votre location pour que vous puissiez profiter sereinement.
+          Que vous soyez déjà sur Airbnb ou que vous souhaitiez vous lancer, nous gérons tout pour vous.
         </p>
       </motion.div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
