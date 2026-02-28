@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Star, TrendingUp, Shield, Headphones } from "lucide-react";
 import ContactPopover from "@/components/ContactPopover";
-import heroHeaderVideo from "@/assets/hero-header-video.mp4";
+import heroHeaderVideo from "@/assets/hero-header-video-20260228.mp4";
 
 const stats = [
   { icon: TrendingUp, value: "40+", label: "logements gérés" },
