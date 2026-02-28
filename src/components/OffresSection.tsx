@@ -26,7 +26,7 @@ const offres = [
   {
     name: "Gestion Signature",
     tagline: "Pour les biens d'exception. Pour une clientèle qui ne transige pas.",
-    commission: "21,5%",
+    commission: "25%",
     icon: Crown,
     popular: true,
     inclus: [
