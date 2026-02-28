@@ -8,66 +8,38 @@ const reasons = [
   { icon: Headphones, title: "Communication 7j/7", desc: "Une équipe réactive pour vous accompagner et gérer vos voyageurs à tout moment." },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.5, delay: i * 0.12, ease: "easeOut" as const },
-  }),
-};
-
 const WhySection = () => (
-  <section id="services" className="py-24 bg-muted/50">
-    <div className="max-w-7xl mx-auto px-6">
+  <section id="services" className="py-16 sm:py-24 bg-muted/50">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-12 sm:mb-16"
       >
-        <motion.h2
-          initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-4xl lg:text-5xl font-bold mb-4"
-        >
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
           Pourquoi faire appel à <span className="text-primary">AzulBay</span> ?
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-muted-foreground text-lg max-w-2xl mx-auto"
-        >
+        </h2>
+        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
           Que vous soyez déjà sur Airbnb ou que vous souhaitiez vous lancer, nous gérons tout pour vous.
-        </motion.p>
+        </p>
       </motion.div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {reasons.map((r, i) => (
           <motion.div
             key={r.title}
-            custom={i}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={cardVariants}
-            whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
-            className="bg-card rounded-2xl p-6 border border-border hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.4, delay: i * 0.08 }}
+            className="bg-card rounded-2xl p-4 sm:p-6 border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-200 will-change-transform"
           >
-            <motion.div
-              whileHover={{ scale: 1.15, rotate: 5 }}
-              transition={{ type: "spring", stiffness: 400 }}
-              className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors"
-            >
-              <r.icon className="text-primary" size={24} />
-            </motion.div>
-            <h3 className="text-xl font-bold mb-2 font-sans">{r.title}</h3>
-            <p className="text-muted-foreground text-sm">{r.desc}</p>
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 sm:mb-4">
+              <r.icon className="text-primary" size={20} />
+            </div>
+            <h3 className="text-base sm:text-xl font-bold mb-1 sm:mb-2 font-sans">{r.title}</h3>
+            <p className="text-muted-foreground text-xs sm:text-sm">{r.desc}</p>
           </motion.div>
         ))}
       </div>

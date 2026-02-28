@@ -8,45 +8,36 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => (
-  <section className="py-24 bg-primary/5 overflow-hidden">
-    <div className="max-w-7xl mx-auto px-6">
+  <section className="py-16 sm:py-24 bg-primary/5 overflow-hidden">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6">
       <motion.div
-        initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="text-center mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-10 sm:mb-12"
       >
-        <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
           Des voyageurs <span className="italic text-primary">satisfaits</span>
         </h2>
       </motion.div>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}
-            initial={{ opacity: 0, y: 50, rotateY: -10 }}
-            whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
-            className="bg-card rounded-2xl p-6 border border-border hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all cursor-pointer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ delay: i * 0.08, duration: 0.4 }}
+            className="bg-card rounded-2xl p-5 sm:p-6 border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-200 will-change-transform"
           >
-            <div className="flex gap-0.5 mb-4">
+            <div className="flex gap-0.5 mb-3 sm:mb-4">
               {[...Array(t.rating)].map((_, j) => (
-                <motion.div
-                  key={j}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.15 + 0.3 + j * 0.05 }}
-                >
-                  <Star size={16} className="fill-primary text-primary" />
-                </motion.div>
+                <Star key={j} size={14} className="fill-primary text-primary" />
               ))}
             </div>
-            <p className="text-foreground mb-4">"{t.text}"</p>
-            <p className="text-sm font-semibold text-muted-foreground">{t.name}</p>
+            <p className="text-foreground text-sm sm:text-base mb-3 sm:mb-4">"{t.text}"</p>
+            <p className="text-xs sm:text-sm font-semibold text-muted-foreground">{t.name}</p>
           </motion.div>
         ))}
       </div>
