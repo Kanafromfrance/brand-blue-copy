@@ -12,10 +12,18 @@ const stats = [
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12">
-      {/* Simplified background — no continuous animation on mobile */}
+      {/* Video background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[1000px] h-[400px] md:h-[600px] rounded-full bg-primary/8 blur-[100px]" />
-        <div className="absolute bottom-0 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full bg-primary/5 blur-[80px]" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
