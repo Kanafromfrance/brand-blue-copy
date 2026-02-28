@@ -10,30 +10,30 @@ const faqs = [
 ];
 
 const FAQSection = () => (
-  <section id="faq" className="py-24">
-    <div className="max-w-3xl mx-auto px-6">
+  <section id="faq" className="py-16 sm:py-24">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6">
       <motion.div
-        initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="text-center mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-10 sm:mb-12"
       >
-        <h2 className="text-4xl lg:text-5xl font-bold mb-4">FAQ</h2>
-        <p className="text-muted-foreground text-lg">Les réponses à vos questions les plus fréquentes.</p>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">FAQ</h2>
+        <p className="text-muted-foreground text-base sm:text-lg">Les réponses à vos questions les plus fréquentes.</p>
       </motion.div>
       <Accordion type="single" collapsible className="space-y-3">
         {faqs.map((f, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{ delay: i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-20px" }}
+            transition={{ delay: i * 0.06, duration: 0.35 }}
           >
-            <AccordionItem value={`item-${i}`} className="bg-card border border-border rounded-xl px-6 hover:border-primary/30 transition-colors">
-              <AccordionTrigger className="text-left font-semibold font-sans hover:no-underline">{f.q}</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
+            <AccordionItem value={`item-${i}`} className="bg-card border border-border rounded-xl px-4 sm:px-6 hover:border-primary/30 transition-colors">
+              <AccordionTrigger className="text-left font-semibold font-sans hover:no-underline text-sm sm:text-base">{f.q}</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-sm">{f.a}</AccordionContent>
             </AccordionItem>
           </motion.div>
         ))}

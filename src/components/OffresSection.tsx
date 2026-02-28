@@ -46,140 +46,96 @@ const offres = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 60, scale: 0.95 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.7, delay: i * 0.2, ease: "easeOut" as const },
-  }),
-};
-
 const OffresSection = () => (
-  <section id="offres" className="py-24 bg-background">
-    <div className="max-w-6xl mx-auto px-6">
+  <section id="offres" className="py-16 sm:py-24 bg-background">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <motion.div
-        initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-12 sm:mb-16"
       >
-        <h2 className="text-4xl lg:text-6xl font-bold mb-4">
+        <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4">
           Nos{" "}
-          <span
-            className="italic text-primary"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
+          <span className="italic text-primary" style={{ fontFamily: "'Playfair Display', serif" }}>
             offres
           </span>
         </h2>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
           Deux formules pensées pour s'adapter à votre bien et à vos ambitions.
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+      <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
         {offres.map((offre, i) => (
           <motion.div
             key={offre.name}
-            custom={i}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={cardVariants}
-            whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className={`relative rounded-3xl border p-8 lg:p-10 flex flex-col transition-shadow duration-300 ${
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.4, delay: i * 0.1 }}
+            className={`relative rounded-3xl border p-6 sm:p-8 lg:p-10 flex flex-col transition-shadow duration-200 will-change-transform ${
               offre.popular
                 ? "border-primary/40 bg-primary/[0.03] shadow-xl shadow-primary/10"
                 : "border-border bg-card hover:shadow-lg hover:shadow-primary/5"
             }`}
           >
             {offre.popular && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, type: "spring", stiffness: 300 }}
-                className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full"
-              >
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full">
                 Recommandé
-              </motion.div>
+              </div>
             )}
 
-            {/* Header */}
-            <div className="flex items-center gap-4 mb-4">
-              <div
-                className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
-                  offre.popular ? "bg-primary/15" : "bg-muted"
-                }`}
-              >
-                <offre.icon
-                  className="text-primary"
-                  size={24}
-                />
+            <div className="flex items-center gap-3 sm:gap-4 mb-4">
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center ${offre.popular ? "bg-primary/15" : "bg-muted"}`}>
+                <offre.icon className="text-primary" size={20} />
               </div>
-              <div>
-                <h3 className="text-xl lg:text-2xl font-bold">{offre.name}</h3>
-              </div>
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold">{offre.name}</h3>
             </div>
 
-            <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-              {offre.tagline}
-            </p>
+            <p className="text-muted-foreground text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed">{offre.tagline}</p>
 
-            {/* Commission */}
-            <div className="mb-8">
-              <span className="text-5xl font-bold text-foreground">{offre.commission}</span>
-              <span className="text-muted-foreground ml-2 text-sm">sur le revenu locatif net</span>
+            <div className="mb-6 sm:mb-8">
+              <span className="text-4xl sm:text-5xl font-bold text-foreground">{offre.commission}</span>
+              <span className="text-muted-foreground ml-2 text-xs sm:text-sm">sur le revenu locatif net</span>
             </div>
 
-            {/* Inclus */}
-            <div className="mb-6 flex-1">
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                Inclus
-              </p>
-              <ul className="space-y-2.5">
+            <div className="mb-4 sm:mb-6 flex-1">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">Inclus</p>
+              <ul className="space-y-2">
                 {offre.inclus.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm">
-                    <Check className="text-primary shrink-0 mt-0.5" size={16} />
+                  <li key={item} className="flex items-start gap-2 text-xs sm:text-sm">
+                    <Check className="text-primary shrink-0 mt-0.5" size={14} />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Non inclus */}
-            <div className="mb-6">
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                Non inclus
-              </p>
-              <ul className="space-y-2.5">
+            <div className="mb-4 sm:mb-6">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">Non inclus</p>
+              <ul className="space-y-2">
                 {offre.nonInclus.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <X className="shrink-0 mt-0.5 opacity-40" size={16} />
+                  <li key={item} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
+                    <X className="shrink-0 mt-0.5 opacity-40" size={14} />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Extra note */}
-            <p className="text-xs text-muted-foreground italic mb-8">{offre.extra}</p>
+            <p className="text-xs text-muted-foreground italic mb-6 sm:mb-8">{offre.extra}</p>
 
-            {/* CTA */}
             <Button
               asChild
-              className={`rounded-full py-6 font-bold text-base gap-2 transition-all duration-300 ${
-                offre.popular
-                  ? "shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:scale-105"
-                  : "hover:scale-105"
+              className={`rounded-full py-5 sm:py-6 font-bold text-sm sm:text-base gap-2 ${
+                offre.popular ? "shadow-lg shadow-primary/20" : ""
               }`}
               variant={offre.popular ? "default" : "outline"}
             >
               <a href="https://wa.link/madr38" target="_blank" rel="noopener noreferrer">
-                Choisir cette offre <ArrowRight size={18} />
+                Choisir cette offre <ArrowRight size={16} />
               </a>
             </Button>
           </motion.div>
