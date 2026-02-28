@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Star, TrendingUp, Shield, Headphones } from "lucide-react";
 import ContactPopover from "@/components/ContactPopover";
+import heroHeaderVideo from "@/assets/hero-header-video.mp4";
 
 const stats = [
   { icon: TrendingUp, value: "40+", label: "logements gérés" },
@@ -15,15 +16,15 @@ const HeroSection = () => {
       {/* Video background */}
       <div className="absolute inset-0 -z-10">
         <video
+          key={heroHeaderVideo}
+          src={heroHeaderVideo}
           autoPlay
           muted
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
+        />
+        <div className="absolute inset-0 bg-background/45" />
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
