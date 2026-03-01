@@ -35,27 +35,25 @@ const availabilities = [
 
 // Simple revenue estimation based on inputs
 function estimateRevenue(rooms: number, condition: string, months: number): { low: number; high: number } {
-  // Base nightly rate per room in Cannes area
-  const basePerRoom: Record<string, number> = {
-    "neuf": 120,
-    "bon": 95,
-    "moyen": 75,
-    "a-renover": 55,
+  // Realistic nightly rate for entire property in Cannes
+  const baseRate: Record<string, Record<number, number>> = {
+    "neuf":       { 1: 85, 2: 110, 3: 140, 4: 170, 5: 200 },
+    "bon":        { 1: 70, 2: 90,  3: 115, 4: 140, 5: 165 },
+    "moyen":      { 1: 55, 2: 72,  3: 90,  4: 110, 5: 130 },
+    "a-renover":  { 1: 40, 2: 55,  3: 70,  4: 85,  5: 100 },
   };
-  const rate = basePerRoom[condition] || 85;
+  const rate = baseRate[condition]?.[rooms] ?? 80;
 
-  // Average occupancy rate with AzulBay management
-  const occupancy = 0.72;
+  // Realistic average occupancy in Cannes
+  const occupancy = 0.55;
 
-  // Average nights per month
   const nightsPerMonth = 30;
-
-  const monthlyRevenue = rooms * rate * nightsPerMonth * occupancy;
+  const monthlyRevenue = rate * nightsPerMonth * occupancy;
   const annualRevenue = monthlyRevenue * months;
 
   return {
     low: Math.round(annualRevenue * 0.85),
-    high: Math.round(annualRevenue * 1.15),
+    high: Math.round(annualRevenue * 1.1),
   };
 }
 
@@ -288,7 +286,7 @@ const RevenueEstimator = ({ variant = "default" }: { variant?: "default" | "nav"
                   <p className="text-[10px] text-muted-foreground">mois/an</p>
                 </div>
                 <div className="bg-secondary/50 rounded-xl p-3 text-center">
-                  <p className="text-lg font-bold text-foreground">72%</p>
+                  <p className="text-lg font-bold text-foreground">55%</p>
                   <p className="text-[10px] text-muted-foreground">taux d'occ.</p>
                 </div>
               </div>
@@ -299,16 +297,18 @@ const RevenueEstimator = ({ variant = "default" }: { variant?: "default" | "nav"
 
               {/* CTAs */}
               <div className="flex flex-col gap-2">
-                <a
-                  href="https://wa.link/madr38"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full"
+                <Button
+                  className="w-full h-12 rounded-xl font-bold text-base gap-2 shadow-lg shadow-primary/20"
+                  onClick={() => {
+                    if (typeof window !== "undefined" && (window as any).iClosedWidget) {
+                      (window as any).iClosedWidget.open();
+                    } else {
+                      window.open("https://app.iclosed.io/e/azulbay/estimation", "_blank");
+                    }
+                  }}
                 >
-                  <Button className="w-full h-12 rounded-xl font-bold text-base gap-2 shadow-lg shadow-primary/20">
-                    Discuter avec un expert <ArrowRight size={18} />
-                  </Button>
-                </a>
+                  Obtenir ces résultats <ArrowRight size={18} />
+                </Button>
                 <Button
                   variant="ghost"
                   onClick={handleReset}
