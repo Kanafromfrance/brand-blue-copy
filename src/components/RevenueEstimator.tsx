@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, MapPin, BedDouble, Sparkles, CalendarDays, TrendingUp, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -61,9 +61,41 @@ function formatCurrency(n: number) {
   return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
 }
 
+const ICLOSED_URL = "https://app.iclosed.io/e/infoprofit/appel-de-d-couverte-azulbay";
+
+const IClosedEmbed = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    // Create the iClosed widget div
+    const widgetDiv = document.createElement("div");
+    widgetDiv.className = "iclosed-widget";
+    widgetDiv.setAttribute("data-url", ICLOSED_URL);
+    widgetDiv.setAttribute("title", "Appel de découverte AzulBay");
+    widgetDiv.style.width = "100%";
+    widgetDiv.style.height = "620px";
+    containerRef.current.appendChild(widgetDiv);
+
+    // Re-trigger the widget script
+    const script = document.createElement("script");
+    script.src = "https://app.iclosed.io/assets/widget.js";
+    script.async = true;
+    containerRef.current.appendChild(script);
+
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.innerHTML = "";
+      }
+    };
+  }, []);
+
+  return <div ref={containerRef} className="w-full min-h-[620px]" />;
+};
+
 const RevenueEstimator = ({ variant = "default" }: { variant?: "default" | "nav" }) => {
   const isNav = variant === "nav";
-  const [step, setStep] = useState(0); // 0=form, 1=loading, 2=result
+  const [step, setStep] = useState(0); // 0=form, 1=loading, 2=result, 3=booking
   const [address, setAddress] = useState("");
   const [rooms, setRooms] = useState("");
   const [condition, setCondition] = useState("");
@@ -115,7 +147,7 @@ const RevenueEstimator = ({ variant = "default" }: { variant?: "default" | "nav"
         )}
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-lg p-0 overflow-hidden border-border/50 gap-0">
+      <DialogContent className={`p-0 overflow-hidden border-border/50 gap-0 ${step === 3 ? "sm:max-w-2xl" : "sm:max-w-lg"}`}>
         <AnimatePresence mode="wait">
           {step === 0 && (
             <motion.div
@@ -298,13 +330,8 @@ const RevenueEstimator = ({ variant = "default" }: { variant?: "default" | "nav"
               {/* CTAs */}
               <div className="flex flex-col gap-2">
                 <Button
-                  className="w-full h-12 rounded-xl font-bold text-base gap-2 shadow-lg shadow-primary/20 iclosed-popup-trigger"
-                  onClick={() => {
-                    // Trigger iClosed popup widget
-                    const trigger = document.querySelector('.iclosed-popup-trigger') as HTMLElement;
-                    if (trigger) trigger.click();
-                  }}
-                  data-iclosed-popup
+                  className="w-full h-12 rounded-xl font-bold text-base gap-2 shadow-lg shadow-primary/20"
+                  onClick={() => setStep(3)}
                 >
                   Obtenir ces résultats <ArrowRight size={18} />
                 </Button>
@@ -316,6 +343,19 @@ const RevenueEstimator = ({ variant = "default" }: { variant?: "default" | "nav"
                   Refaire une estimation
                 </Button>
               </div>
+            </motion.div>
+          )}
+
+          {step === 3 && (
+            <motion.div
+              key="booking"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="p-0"
+            >
+              <IClosedEmbed />
             </motion.div>
           )}
         </AnimatePresence>
