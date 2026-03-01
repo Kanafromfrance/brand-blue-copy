@@ -177,7 +177,7 @@ const BlogArticle = () => {
 
             {post.content ? (
               <div
-                className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-primary prose-img:rounded-xl"
+                className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:mt-8 prose-headings:mb-4 prose-p:mb-4 prose-p:leading-relaxed prose-ul:my-4 prose-ul:list-disc prose-ul:pl-6 prose-li:mb-1 prose-a:text-primary prose-a:underline prose-img:rounded-xl prose-blockquote:border-l-primary prose-blockquote:italic prose-hr:my-8 prose-h2:text-2xl prose-h3:text-xl"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             ) : (
