@@ -2,7 +2,7 @@ import logo from "@/assets/logo.png";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ContactPopover from "@/components/ContactPopover";
+import RevenueEstimator from "@/components/RevenueEstimator";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -48,7 +48,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:block">
-          <ContactPopover variant="nav" />
+          <RevenueEstimator variant="nav" />
         </div>
 
         <button className="md:hidden relative z-50" onClick={() => setOpen(!open)}>
@@ -90,7 +90,7 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <div className="mt-2">
-                <ContactPopover />
+                <RevenueEstimator />
               </div>
             </div>
           </motion.div>
