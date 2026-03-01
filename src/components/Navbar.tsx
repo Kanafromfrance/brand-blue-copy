@@ -7,7 +7,7 @@ import ContactPopover from "@/components/ContactPopover";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const links = ["Services", "Comment ça marche", "Secteurs", "À propos", "FAQ"];
+  const links = ["Services", "Comment ça marche", "Secteurs", "Blog", "FAQ"];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -41,7 +41,7 @@ const Navbar = () => {
           {links.map((l, i) => (
             <motion.a
               key={l}
-              href={`#${l.toLowerCase().replace(/\s/g, "-")}`}
+              href={l === "Blog" ? "/blog" : `#${l.toLowerCase().replace(/\s/g, "-")}`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ const Navbar = () => {
               {links.map((l, i) => (
                 <motion.a
                   key={l}
-                  href={`#${l.toLowerCase().replace(/\s/g, "-")}`}
+                  href={l === "Blog" ? "/blog" : `#${l.toLowerCase().replace(/\s/g, "-")}`}
                   className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
                   onClick={() => setOpen(false)}
                   initial={{ x: -20, opacity: 0 }}
