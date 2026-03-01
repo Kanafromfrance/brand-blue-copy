@@ -298,14 +298,13 @@ const RevenueEstimator = ({ variant = "default" }: { variant?: "default" | "nav"
               {/* CTAs */}
               <div className="flex flex-col gap-2">
                 <Button
-                  className="w-full h-12 rounded-xl font-bold text-base gap-2 shadow-lg shadow-primary/20"
+                  className="w-full h-12 rounded-xl font-bold text-base gap-2 shadow-lg shadow-primary/20 iclosed-popup-trigger"
                   onClick={() => {
-                    if (typeof window !== "undefined" && (window as any).iClosedWidget) {
-                      (window as any).iClosedWidget.open();
-                    } else {
-                      window.open("https://app.iclosed.io/e/azulbay/estimation", "_blank");
-                    }
+                    // Trigger iClosed popup widget
+                    const trigger = document.querySelector('.iclosed-popup-trigger') as HTMLElement;
+                    if (trigger) trigger.click();
                   }}
+                  data-iclosed-popup
                 >
                   Obtenir ces résultats <ArrowRight size={18} />
                 </Button>
