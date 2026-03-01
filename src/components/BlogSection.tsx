@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Tag } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const articles = [
   {
@@ -72,6 +73,15 @@ const BlogSection = () => (
             </div>
           </motion.article>
         ))}
+      </div>
+
+      <div className="text-center mt-10">
+        <Link
+          to="/blog"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+        >
+          Voir tous les articles <ArrowRight size={16} />
+        </Link>
       </div>
     </div>
   </section>
