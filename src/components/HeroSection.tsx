@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Star, TrendingUp, Shield, Headphones } from "lucide-react";
-import ContactPopover from "@/components/ContactPopover";
+import RevenueEstimator from "@/components/RevenueEstimator";
 import heroHeaderVideo from "@/assets/hero-header-video-20260228.mp4";
 
 const stats = [
@@ -96,7 +96,7 @@ const HeroSection = () => {
           transition={{ duration: 0.4, delay: 0.5 }}
           className="mb-10 sm:mb-12"
         >
-          <ContactPopover />
+          <RevenueEstimator />
         </motion.div>
 
         {/* Stats */}
