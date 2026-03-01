@@ -6,6 +6,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
 
+const SITE_URL = "https://brand-blue-copy.lovable.app";
+
 interface BlogPost {
   id: string;
   title: string;
@@ -15,6 +17,56 @@ interface BlogPost {
   cover_image_url: string | null;
   tag: string | null;
   published_at: string | null;
+}
+
+function setMetaTag(name: string, content: string, attr = "name") {
+  let el = document.querySelector(`meta[${attr}="${name}"]`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, name);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
+function setCanonical(url: string) {
+  let el = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!el) {
+    el = document.createElement("link");
+    el.setAttribute("rel", "canonical");
+    document.head.appendChild(el);
+  }
+  el.setAttribute("href", url);
+}
+
+function setJsonLd(post: BlogPost) {
+  const id = "blog-article-jsonld";
+  let el = document.getElementById(id);
+  if (!el) {
+    el = document.createElement("script");
+    el.id = id;
+    el.setAttribute("type", "application/ld+json");
+    document.head.appendChild(el);
+  }
+  el.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt || "",
+    image: post.cover_image_url || undefined,
+    datePublished: post.published_at,
+    dateModified: post.published_at,
+    author: { "@type": "Organization", name: "AzulBay" },
+    publisher: {
+      "@type": "Organization",
+      name: "AzulBay",
+      url: SITE_URL,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog/${post.slug}`,
+    },
+  });
 }
 
 const BlogArticle = () => {
@@ -34,11 +86,33 @@ const BlogArticle = () => {
         setPost(data);
         setLoading(false);
         if (data) {
-          document.title = `${data.title} — AzulBay Blog`;
-          const meta = document.querySelector('meta[name="description"]');
-          if (meta && data.excerpt) meta.setAttribute("content", data.excerpt);
+          const canonical = `${SITE_URL}/blog/${data.slug}`;
+          document.title = `${data.title} | AzulBay — Conciergerie Airbnb Cannes`;
+
+          setMetaTag("description", data.excerpt || `${data.title} — Article AzulBay`);
+          setCanonical(canonical);
+
+          // Open Graph
+          setMetaTag("og:title", data.title, "property");
+          setMetaTag("og:description", data.excerpt || "", "property");
+          setMetaTag("og:type", "article", "property");
+          setMetaTag("og:url", canonical, "property");
+          if (data.cover_image_url) setMetaTag("og:image", data.cover_image_url, "property");
+
+          // Twitter
+          setMetaTag("twitter:card", "summary_large_image");
+          setMetaTag("twitter:title", data.title);
+          setMetaTag("twitter:description", data.excerpt || "");
+
+          // JSON-LD
+          setJsonLd(data);
         }
       });
+
+    return () => {
+      // Cleanup JSON-LD on unmount
+      document.getElementById("blog-article-jsonld")?.remove();
+    };
   }, [slug]);
 
   if (loading) {
@@ -98,14 +172,16 @@ const BlogArticle = () => {
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 leading-tight">{post.title}</h1>
 
             {post.cover_image_url && (
-              <img src={post.cover_image_url} alt={post.title} className="w-full rounded-2xl mb-8 object-cover max-h-96" />
+              <img src={post.cover_image_url} alt={post.title} className="w-full rounded-2xl mb-8 object-cover max-h-96" loading="lazy" />
             )}
 
-            {post.content && (
+            {post.content ? (
               <div
-                className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-primary"
+                className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-primary prose-img:rounded-xl"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
+            ) : (
+              <p className="text-muted-foreground italic">Contenu en cours de rédaction…</p>
             )}
           </motion.div>
         </div>
