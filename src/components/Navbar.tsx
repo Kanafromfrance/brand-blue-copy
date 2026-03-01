@@ -16,11 +16,8 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-background/90 backdrop-blur-xl shadow-lg border-b border-border/50"
           : "bg-transparent"
@@ -39,28 +36,20 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-8">
           {links.map((l, i) => (
-            <motion.a
+            <a
               key={l}
               href={l === "Blog" ? "/blog" : `#${l.toLowerCase().replace(/\s/g, "-")}`}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + i * 0.08 }}
             >
               {l}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full" />
-            </motion.a>
+            </a>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5 }}
-          className="hidden md:block"
-        >
+        <div className="hidden md:block">
           <ContactPopover variant="nav" />
-        </motion.div>
+        </div>
 
         <button className="md:hidden relative z-50" onClick={() => setOpen(!open)}>
           <AnimatePresence mode="wait">
@@ -107,7 +96,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 };
 

@@ -119,13 +119,13 @@ const BlogArticle = () => {
     return (
       <main>
         <Navbar />
-        <div className="pt-28 pb-16 max-w-3xl mx-auto px-4 animate-pulse space-y-6">
-          <div className="h-8 bg-muted rounded w-3/4" />
-          <div className="h-64 bg-muted rounded-2xl" />
+        <div className="pt-28 pb-16 max-w-3xl mx-auto px-4 space-y-6">
+          <div className="h-8 bg-muted rounded w-3/4 animate-pulse" />
+          <div className="h-64 bg-muted rounded-2xl animate-pulse" />
           <div className="space-y-3">
-            <div className="h-4 bg-muted rounded w-full" />
-            <div className="h-4 bg-muted rounded w-5/6" />
-            <div className="h-4 bg-muted rounded w-4/6" />
+            <div className="h-4 bg-muted rounded w-full animate-pulse" />
+            <div className="h-4 bg-muted rounded w-5/6 animate-pulse" />
+            <div className="h-4 bg-muted rounded w-4/6 animate-pulse" />
           </div>
         </div>
         <Footer />
@@ -155,7 +155,12 @@ const BlogArticle = () => {
             <ArrowLeft size={14} /> Retour au blog
           </Link>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            style={{ willChange: "opacity, transform" }}
+          >
             <div className="flex items-center gap-3 mb-4">
               {post.tag && (
                 <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary bg-primary/10 rounded-full px-3 py-1">
@@ -177,7 +182,17 @@ const BlogArticle = () => {
 
             {post.content ? (
               <div
-                className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:mt-8 prose-headings:mb-4 prose-p:mb-4 prose-p:leading-relaxed prose-ul:my-4 prose-ul:list-disc prose-ul:pl-6 prose-li:mb-1 prose-a:text-primary prose-a:underline prose-img:rounded-xl prose-blockquote:border-l-primary prose-blockquote:italic prose-hr:my-8 prose-h2:text-2xl prose-h3:text-xl"
+                className="prose prose-lg max-w-none
+                  prose-headings:font-bold prose-headings:mt-8 prose-headings:mb-4
+                  prose-p:mb-4 prose-p:leading-relaxed
+                  prose-ul:my-4 prose-ul:list-disc prose-ul:pl-6 prose-li:mb-1
+                  prose-ol:my-4 prose-ol:list-decimal prose-ol:pl-6
+                  prose-a:text-primary prose-a:underline
+                  prose-img:rounded-xl
+                  prose-blockquote:border-l-primary prose-blockquote:italic
+                  prose-hr:my-8
+                  prose-h2:text-2xl prose-h3:text-xl
+                  prose-strong:text-foreground"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             ) : (

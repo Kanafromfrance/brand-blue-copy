@@ -46,9 +46,10 @@ const Blog = () => {
           </Link>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            style={{ willChange: "opacity, transform" }}
             className="text-center mb-12 sm:mb-16"
           >
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
@@ -79,9 +80,10 @@ const Blog = () => {
               {posts.map((post, i) => (
                 <motion.div
                   key={post.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
+                  style={{ willChange: "opacity, transform" }}
                 >
                   <Link
                     to={`/blog/${post.slug}`}
