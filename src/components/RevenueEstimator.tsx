@@ -165,10 +165,10 @@ const RevenueEstimator = ({ variant = "default" }: { variant?: "default" | "nav"
                   Estimation gratuite
                 </div>
                 <h2 className="text-2xl font-bold text-foreground">
-                  Combien pourrait rapporter votre bien ?
+                  Combien pourrait rapporter votre logement ?
                 </h2>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Estimez vos revenus locatifs avec la gestion AzulBay.
+                  Résidence secondaire, maison de vacances ou bien hérité — estimez vos revenus en 30 secondes.
                 </p>
               </div>
 
