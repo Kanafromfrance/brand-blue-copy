@@ -4,7 +4,7 @@ import RevenueEstimator from "@/components/RevenueEstimator";
 import heroHeaderVideo from "@/assets/hero-header-video-20260228.mp4";
 
 const stats = [
-  { icon: TrendingUp, value: "40+", label: "logements gérés" },
+  { icon: TrendingUp, value: "40+", label: "propriétaires accompagnés" },
   { icon: Shield, value: "+33%", label: "de revenus en moyenne" },
   { icon: Headphones, value: "7j/7", label: "support disponible" },
   { icon: Star, value: "4.8/5", label: "note globale" },
@@ -49,26 +49,26 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-[1.08] mb-6 tracking-tight will-change-transform"
         >
-          On gère vos{" "}
+          Votre{" "}
           <span
             className="text-primary italic"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            propriétés
+            maison
           </span>{" "}
-          pour
+          mérite de
           <br className="hidden md:block" />
           <span
             className="text-primary italic"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            {" "}gagner plus
+            {" "}rapporter
           </span>
           ,
           <br className="hidden md:block" />
-          les pieds dans{" "}
+          même sans{" "}
           <span className="relative inline-block">
-            l'eau.
+            vous.
             <motion.span
               className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-[4px] sm:h-[6px] bg-primary rounded-full"
               initial={{ scaleX: 0 }}
@@ -86,7 +86,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-xl leading-relaxed px-2"
         >
-          Conciergerie haut de gamme pour propriétaires exigeants à Cannes. On gère à 100%, vous récoltez les résultats.
+          Résidence secondaire, maison de vacances ou bien hérité — on s'occupe de tout pour que votre logement vous rapporte, sans aucun stress.
         </motion.p>
 
         {/* CTA */}
@@ -145,7 +145,7 @@ const HeroSection = () => {
             ))}
           </div>
           <p className="text-xs sm:text-sm font-medium text-muted-foreground">
-            <span className="text-foreground font-bold">+200</span> propriétaires satisfaits
+            <span className="text-foreground font-bold">+40</span> propriétaires nous font confiance
           </p>
         </motion.div>
       </div>

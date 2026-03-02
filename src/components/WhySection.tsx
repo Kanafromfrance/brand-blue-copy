@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Clock, TrendingUp, Shield, Headphones } from "lucide-react";
 
 const reasons = [
-  { icon: Clock, title: "Gestion clé en main", desc: "Déjà sur Airbnb ou envie de vous lancer ? On s'occupe de tout, de A à Z." },
-  { icon: TrendingUp, title: "+30% de CA en moyenne", desc: "Stratégie tarifaire, visibilité optimisée et annonces professionnelles pour maximiser vos revenus." },
-  { icon: Shield, title: "Sérénité totale", desc: "Assurance, vérification des voyageurs et suivi en temps réel — que vous soyez débutant ou expérimenté." },
-  { icon: Headphones, title: "Communication 7j/7", desc: "Une équipe réactive pour vous accompagner et gérer vos voyageurs à tout moment." },
+  { icon: Clock, title: "Gestion clé en main", desc: "Résidence secondaire, maison de vacances ou bien hérité — on s'occupe de tout pendant votre absence." },
+  { icon: TrendingUp, title: "+33% de revenus en moyenne", desc: "Stratégie tarifaire, visibilité optimisée et annonces professionnelles pour rentabiliser votre logement." },
+  { icon: Shield, title: "Sérénité totale", desc: "Assurance, vérification des voyageurs et suivi en temps réel — votre bien est entre de bonnes mains." },
+  { icon: Headphones, title: "Communication 7j/7", desc: "Une équipe réactive pour vous tenir informé et gérer vos voyageurs à tout moment." },
 ];
 
 const WhySection = () => (
@@ -22,7 +22,7 @@ const WhySection = () => (
           Pourquoi faire appel à <span className="text-primary">AzulBay</span> ?
         </h2>
         <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
-          Que vous soyez déjà sur Airbnb ou que vous souhaitiez vous lancer, nous gérons tout pour vous.
+          Votre logement est vide une partie de l'année ? On le fait travailler pour vous, sans que vous ayez à lever le petit doigt.
         </p>
       </motion.div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">

@@ -46,10 +46,10 @@ const AboutSection = () => (
             Qui sommes <span className="italic text-primary">nous</span> ?
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg mb-4 sm:mb-6">
-            AzulBay est née de la conviction que la gestion locative peut être simple, transparente et rentable. Notre équipe d'experts en hospitalité met tout en œuvre pour valoriser votre bien et offrir une expérience inoubliable à vos voyageurs.
+            AzulBay est née d'un constat simple : trop de propriétaires laissent leur résidence secondaire ou leur bien de vacances dormir une grande partie de l'année. Notre équipe transforme ces logements en sources de revenus, sans aucun effort de votre part.
           </p>
           <p className="text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">
-            Présents dans les principales villes de France, nous combinons technologie et savoir-faire humain pour une gestion sur-mesure.
+            Basés exclusivement à Cannes, nous connaissons chaque quartier, chaque événement, chaque opportunité pour maximiser vos revenus.
           </p>
           <div className="grid grid-cols-3 gap-4 sm:gap-6">
             {stats.map((s) => (

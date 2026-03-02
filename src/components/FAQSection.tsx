@@ -2,11 +2,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { motion } from "framer-motion";
 
 const faqs = [
-  { q: "Quels sont vos tarifs ?", a: "Nos tarifs sont basés sur un pourcentage des revenus locatifs générés. Contactez-nous pour une estimation personnalisée et gratuite." },
-  { q: "Dans quelles villes intervenez-vous ?", a: "Nous sommes présents dans plus de 15 villes en France. Contactez-nous pour vérifier la disponibilité dans votre zone." },
-  { q: "Comment sont sélectionnés les voyageurs ?", a: "Nous vérifions l'identité et les avis de chaque voyageur avant d'accepter une réservation pour garantir la sécurité de votre bien." },
-  { q: "Puis-je utiliser mon logement quand je le souhaite ?", a: "Absolument ! Vous gardez le contrôle total de votre calendrier. Bloquez les dates de votre choix à tout moment." },
-  { q: "Que comprend le service de ménage ?", a: "Nettoyage complet entre chaque voyageur, fourniture du linge de maison, vérification de l'inventaire et réapprovisionnement des consommables." },
+  { q: "Quels sont vos tarifs ?", a: "Nous prenons une commission unique de 20 % sur les revenus locatifs générés. Pas de frais cachés, pas d'abonnement. Contactez-nous pour une estimation gratuite." },
+  { q: "Je peux utiliser ma maison quand je veux ?", a: "Absolument ! C'est votre logement. Bloquez vos dates de vacances, vos week-ends ou vos périodes familiales en un clic. Vous gardez le contrôle total." },
+  { q: "Mon logement est vide seulement quelques mois, ça vaut le coup ?", a: "Oui, même 2 à 3 mois par an peuvent générer des revenus significatifs à Cannes, surtout pendant les événements (Festival, MIPIM, Lions…)." },
+  { q: "Comment sont sélectionnés les voyageurs ?", a: "Nous vérifions l'identité et les avis de chaque voyageur. Nous privilégions les profils B2B et familles pour protéger votre bien." },
+  { q: "Que comprend le service de ménage ?", a: "Nettoyage complet entre chaque voyageur, fourniture du linge de maison hôtelier, vérification de l'inventaire et réapprovisionnement des consommables." },
+  { q: "J'ai hérité d'un bien, comment commencer ?", a: "On vous accompagne de A à Z : audit du logement, shooting photo, mise en ligne et gestion complète. Vous n'avez rien à faire." },
 ];
 
 const FAQSection = () => (
