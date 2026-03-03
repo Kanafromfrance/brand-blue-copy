@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MessageSquare, KeyRound, Wrench, SparklesIcon, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const services = [
@@ -103,6 +104,12 @@ const HowItWorks = () => (
             </motion.div>
           ))}
         </div>
+      </div>
+
+      <div className="text-center mt-10 sm:mt-14">
+        <Link to="/conciergerie-cannes" className="text-sm sm:text-base text-primary hover:underline font-medium">
+          Voir tous les détails sur notre conciergerie Airbnb à Cannes →
+        </Link>
       </div>
     </div>
   </section>
