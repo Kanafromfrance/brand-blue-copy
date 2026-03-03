@@ -299,6 +299,16 @@ Deno.serve(async (req) => {
   }
 
   try {
+    // Validate sync secret token
+    const SYNC_SECRET = Deno.env.get("SYNC_SECRET_TOKEN");
+    const providedSecret = req.headers.get("x-sync-secret");
+    if (!SYNC_SECRET || providedSecret !== SYNC_SECRET) {
+      return new Response(
+        JSON.stringify({ success: false, error: "Unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
+
     const NOTION_API_KEY = Deno.env.get("NOTION_API_KEY");
     if (!NOTION_API_KEY) throw new Error("NOTION_API_KEY is not configured");
 
