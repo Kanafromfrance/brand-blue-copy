@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Calendar, Tag, ArrowLeft } from "lucide-react";
+import DOMPurify from "dompurify";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
@@ -193,7 +194,7 @@ const BlogArticle = () => {
                   prose-hr:my-8
                   prose-h2:text-2xl prose-h3:text-xl
                   prose-strong:text-foreground"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content || '') }}
               />
             ) : (
               <p className="text-muted-foreground italic">Contenu en cours de rédaction…</p>
