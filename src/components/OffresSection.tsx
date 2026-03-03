@@ -98,7 +98,7 @@ const OffresSection = () => (
                   {section.category}
                 </p>
               </div>
-              <ul className="space-y-2.5 ml-10">
+              <ul className="space-y-2.5 ml-0 sm:ml-10">
                 {section.items.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm">
                     <Check className="text-primary shrink-0 mt-0.5" size={14} />

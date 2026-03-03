@@ -12,7 +12,7 @@ const stats = [
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12">
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20 pb-8 sm:pt-24 sm:pb-12">
       {/* Video background */}
       <div className="absolute inset-0 -z-10">
         <video
@@ -27,7 +27,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-background/45" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+      <div className="max-w-5xl mx-auto px-3 sm:px-6 flex flex-col items-center text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -47,7 +47,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-[1.08] mb-6 tracking-tight will-change-transform"
+          className="text-[2rem] sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-[1.1] mb-4 sm:mb-6 tracking-tight will-change-transform"
         >
           Votre{" "}
           <span
@@ -84,7 +84,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-xl leading-relaxed px-2"
+          className="text-sm sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-10 max-w-xl leading-relaxed px-1 sm:px-2"
         >
           Résidence secondaire, maison de vacances ou bien hérité — on s'occupe de tout pour que votre logement vous rapporte, sans aucun stress.
         </motion.p>
@@ -94,7 +94,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.5 }}
-          className="mb-10 sm:mb-12"
+          className="mb-8 sm:mb-12"
         >
           <RevenueEstimator />
         </motion.div>
@@ -104,7 +104,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-4 bg-card/80 backdrop-blur-sm rounded-2xl px-4 sm:px-8 py-4 sm:py-5 border border-border/50 w-full sm:w-auto"
+          className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-8 gap-y-3 bg-card/80 backdrop-blur-sm rounded-2xl px-3 sm:px-8 py-3 sm:py-5 border border-border/50 w-full sm:w-auto"
         >
           {stats.map((s, i) => (
             <div key={s.label} className="flex items-center gap-2 sm:gap-3">
@@ -127,7 +127,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="flex items-center gap-3 sm:gap-4 mt-6 sm:mt-8"
+          className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mt-4 sm:mt-8"
         >
           <div className="flex -space-x-2">
             {[1, 2, 3, 4, 5].map((i) => (
