@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Star, TrendingUp, Shield, Headphones } from "lucide-react";
+import { Link } from "react-router-dom";
 import RevenueEstimator from "@/components/RevenueEstimator";
 import heroHeaderVideo from "@/assets/hero-header-video-20260228.mp4";
 
@@ -97,6 +98,12 @@ const HeroSection = () => {
           className="mb-8 sm:mb-12"
         >
           <RevenueEstimator />
+          <p className="mt-3 text-xs sm:text-sm text-muted-foreground">
+            Vous êtes propriétaire ? Découvrez notre page dédiée à la{" "}
+            <Link to="/conciergerie-cannes" className="text-primary hover:underline font-medium">
+              conciergerie Airbnb à Cannes
+            </Link>.
+          </p>
         </motion.div>
 
         {/* Stats */}

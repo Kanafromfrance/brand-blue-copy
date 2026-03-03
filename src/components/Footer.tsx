@@ -25,6 +25,7 @@ const Footer = () => (
           <h4 className="font-bold mb-3 sm:mb-4 font-sans text-xs sm:text-sm uppercase tracking-wider">Navigation</h4>
           <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm opacity-70">
             <li><Link to="/blog" className="hover:opacity-100 transition-opacity">Blog</Link></li>
+            <li><Link to="/conciergerie-cannes" className="hover:opacity-100 transition-opacity">Conciergerie Airbnb à Cannes</Link></li>
             <li><a href="/#à-propos" className="hover:opacity-100 transition-opacity">À propos</a></li>
             <li><a href="/#faq" className="hover:opacity-100 transition-opacity">FAQ</a></li>
           </ul>
