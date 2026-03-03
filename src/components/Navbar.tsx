@@ -23,12 +23,12 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3">
         <a href="#" className="flex items-center gap-2">
           <motion.img
             src={logo}
             alt="AzulBay"
-            className="h-12 w-auto"
+            className="h-10 sm:h-12 w-auto"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           />
