@@ -55,21 +55,21 @@ const HeroSection = () => {
             className="text-primary italic"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            maison
-          </span>{" "}
-          mérite de
+            logement
+          </span>
+          , encore plus
           <br className="hidden md:block" />
           <span
             className="text-primary italic"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            {" "}rapporter
+            {" "}rentable
           </span>
-          ,
+          .
           <br className="hidden md:block" />
-          même sans{" "}
+          Les pieds dans{" "}
           <span className="relative inline-block">
-            vous.
+            l'eau.
             <motion.span
               className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-[4px] sm:h-[6px] bg-primary rounded-full"
               initial={{ scaleX: 0 }}
